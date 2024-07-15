@@ -11,26 +11,41 @@
 
   <body>
     <main class="main">
-      <h1>BINGO</h1>
+      <h1 class="bingo-main-title">BINGO</h1>
 
       <div class="bingo-game">
         <div class="user">
           <h2 class="user__title">USER</h2>
-          <div class="card"></div>
-          <span></span>
+          <div id="user-card" class="card card--user"></div>
+          <span id="result-user" class="text"></span>
         </div>
 
-        <div class="bingo-card">
-          <span></span>
+        <div class="bingo">
+          <h2 class="bingo__title">BINGO CARD</h2>
+          <div id="bingo-card" class="card card--bingo"></div>
+          <span id="bingo-random-number" class="text"></span>
         </div>
 
         <div class="pc">
           <h2 class="pc__title">PC</h2>
-          <div class="card"></div>
-          <span></span>
+          <div id="pc-card" class="card card--pc"></div>
+          <span id="result-pc" class="text"></span>
         </div>
       </div>
-      <button>RESTART GAME</button>
+
+      <button id="start-button" class="button">START GAME</button>
+
+      <button id="restart-button" class="button hidden">RESTART GAME</button>
+
+      <!-- <div id="user-card">
+        <div class="card-numbers"></div>
+        <p></p>
+      </div>
+      <div id="bingo-board"></div>
+      <div id="pc-card">
+        <div class="card-numbers"></div>
+        <p></p>
+      </div> -->
     </main>
     <script type="module" src="./js/index.js"></script>
   </body>

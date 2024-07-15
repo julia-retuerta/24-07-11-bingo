@@ -1,19 +1,67 @@
+@use '../mixins/responsive.scss' as *;
+
 .bingo-game {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 40px;
-}
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 80px;
+  gap: 40px;
 
-.bingo-card {
-  width: 500px;
-  height: 200px;
-  border: 2px solid blue;
-  background-color: var(--beige-color);
+  @include responsive(desktop) {
+    flex-direction: row;
+    justify-content: center;
+    align-items: start;
+    gap: 50px;
+  }
 }
 
 .card {
-  width: 400px;
-  height: 200px;
-  border: 2px solid blue;
-  background-color: var(--beige-color);
+  width: 500px;
+  height: 300px;
+  margin-bottom: 30px;
+  border: 3px solid var(--red-color);
+  border-radius: 8px;
+  background-color: var(--white-color);
+  font-weight: 600;
+
+  &--user,
+  &--pc {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    font-size: 32px;
+  }
+
+  &--bingo {
+    width: 550px;
+    display: grid;
+    grid-template-columns: repeat(11, 1fr);
+  }
 }
+
+.number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  border: 2px solid var(--red-color);
+
+  &--check {
+    background-color: #a6d3a6;
+  }
+
+  &--user-check {
+    background-color: darksalmon;
+  }
+
+  &--pc-check {
+    background-color: lightblue;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+// .selected-numbers {
+//   background-color: yellow;
+// }
