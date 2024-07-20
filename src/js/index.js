@@ -61,7 +61,6 @@ const fillBoard = (numbers, board) => {
 
 const checkWinner = () => {
   const userBoardChecked = userCardElement.querySelectorAll('.number--user-check');
-
   const pcBoardChecked = pcCardElement.querySelectorAll('.number--pc-check');
 
   if (userBoardChecked.length === 15 && pcBoardChecked.length === 15) {
@@ -90,10 +89,10 @@ const extractRandomNumbers = () => {
     return;
   }
 
-  const index = Math.floor(Math.random() * bingoNumbers.length);
-  const number = bingoNumbers[index];
+  const index = Math.floor(Math.random() * bingoNumbers.length); // Genera un índice aleatorio
+  const number = bingoNumbers[index]; // Obtiene el número en ese índice
 
-  bingoNumbers.splice(index, 1);
+  bingoNumbers.splice(index, 1); // Elimina ese número del array para que no se repita en futuras extracciones
 
   bingoCardElement.querySelector(`[data-number='${number}']`).classList.add('number--check');
   bingoRandomNumberElement.textContent = `Número ${number}`;
@@ -110,7 +109,7 @@ const extractRandomNumbers = () => {
 };
 
 const startGame = () => {
-  intervalId = setInterval(extractRandomNumbers, 0);
+  intervalId = setInterval(extractRandomNumbers, 100);
   startButtonElement.classList.add('hidden');
   restartButtonElement.classList.remove('hidden');
 };
@@ -127,20 +126,27 @@ const initializeGame = () => {
 startButtonElement.addEventListener('click', startGame);
 
 restartButtonElement.addEventListener('click', () => {
-  // Reiniciar el juego
+  clearInterval(intervalId); // Detener el intervalo actual
+
+  // Reiniciar el contenido de las cards
   bingoCardElement.innerHTML = '';
   userCardElement.innerHTML = '';
   pcCardElement.innerHTML = '';
   resultUserElement.textContent = '';
   resultPcElement.textContent = '';
+  bingoRandomNumberElement.textContent = '';
+
+  // Reiniciar los arrays y variables
   bingoNumbers.length = 0;
   userNumbers = [];
   pcNumbers = [];
   isWinner = false;
-  // bingoRandomNumberElement.textContent = '';
-  // restartButtonElement.classList.add('hidden');
-  // startButtonElement.classList.remove('hidden');
+
+  // Inicializar el juego de nuevo
   initializeGame();
+
+  // Empezar el juego automáticamente
+  startGame();
 });
 
 initializeGame();
